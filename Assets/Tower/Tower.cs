@@ -5,8 +5,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] int cost = 75;
-    [SerializeField] float buildDelay = 1f;
-
+    [SerializeField] float buildDelay = 0.9f;
     void Start()
     {
         StartCoroutine(Build());

@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Path
+  - Manager
+  - Connector
+  - BallistaBody
+  - ConnectPoint
   layers:
   - Default
   - TransparentFX

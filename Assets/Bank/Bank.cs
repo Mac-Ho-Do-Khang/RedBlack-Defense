@@ -41,12 +41,6 @@ public class Bank : MonoBehaviour
 
     void UpdateDisplay()
     {
-        displayBalance.text = "Gold: " + currentBalance;
+        displayBalance.text = "$" + currentBalance;
     }
-
-    //void ReloadScene()
-    //{
-    //    Scene currentScene = SceneManager.GetActiveScene();
-    //    SceneManager.LoadScene(currentScene.buildIndex);
-    //}
 }

@@ -6,23 +6,23 @@ public class TargetLocator : MonoBehaviour
 {
     [SerializeField] Transform weapon;
     [SerializeField] ParticleSystem projectileParticles;
-    [SerializeField] GameObject shoot_sound;
-    [SerializeField] float shoot_interval = 1f;
-    [SerializeField] float range = 25f;
+    [SerializeField] float shoot_range = 20f;
+    [SerializeField] float range;
+    [SerializeField] float shoot_rate = 0.75f;
+    [SerializeField] float shoot_speed = 40f;
     [SerializeField] Transform top_mesh;
-    [SerializeField] public bool buffed;
-    bool previous_buffed;
-    [SerializeField] GameObject buff_sound;
-    [SerializeField] GameObject debuff_sound;
+    Transform        target;
+
+    [SerializeField] GameObject   buff_sound;
+    [SerializeField] public bool  buffed;
+    [SerializeField] public float buff_factor = 1.5f;
+    bool             previous_buffed;
     ParticleSystem[] buffParticles;
-    Light buffLight;
-    string buffEffect_name = "FantasyEffect";
-    float last_shoot;
-    Transform target;
+    Light            buffLight;
+    string           buffEffect_name = "FantasyEffect";
     
     void Start()
     {
-        //last_shoot= 0f;
         top_mesh = transform.Find("BallistaTopMesh");
         Transform fantasy_effect = transform.Find(buffEffect_name);
         if (fantasy_effect != null)
@@ -35,13 +35,11 @@ public class TargetLocator : MonoBehaviour
     }
     void Update()
     {
-        if      (previous_buffed == false && buffed == true) Instantiate(buff_sound, transform.position, Quaternion.identity);
-        //else if (previous_buffed == true && buffed == false) Instantiate(debuff_sound, transform.position, Quaternion.identity);
+        if (previous_buffed == false && buffed == true) Instantiate(buff_sound, transform.position, Quaternion.identity);
         previous_buffed = buffed;
-
+        CheckBuff();
         FindClosestTarget();
         AimWeapon();
-        CheckBuff(buffed);
     }
 
     void FindClosestTarget()
@@ -80,22 +78,27 @@ public class TargetLocator : MonoBehaviour
     {
         var emissionModule = projectileParticles.emission;
         emissionModule.enabled = isActive;
-        //if (isActive && Time.time - last_shoot >= shoot_interval && top_mesh.gameObject.activeSelf)
-        //{
-        //    Instantiate(shoot_sound, transform.position, Quaternion.identity);
-        //    last_shoot = Time.time; // Update the last shoot time
-        //}
     }
-    void CheckBuff(bool state)
+    void CheckBuff()
     {
         foreach(var buff_effect in buffParticles)
         {
             var buff_emission = buff_effect.emission;
-            buff_emission.enabled = state;
+            buff_emission.enabled = buffed;
         }
-        buffLight.enabled = state;
+        buffLight.enabled = buffed;
         var shoot_effect = projectileParticles.emission;
-        if (state) shoot_effect.rateOverTime = 2f;
-        else       shoot_effect.rateOverTime = 0.75f;
+        if (buffed) 
+        {
+            shoot_effect.rateOverTime      = shoot_rate  * buff_factor;
+            projectileParticles.startSpeed = shoot_speed * buff_factor;
+            range                          = shoot_range * buff_factor;
+        }
+        else
+        {
+            shoot_effect.rateOverTime      = shoot_rate;
+            projectileParticles.startSpeed = shoot_speed;
+            range                          = shoot_range;
+        }
     }
 }

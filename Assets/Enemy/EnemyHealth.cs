@@ -9,11 +9,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject dieVFX_SFX;
     [Tooltip("Adds amount to maxHitPoints when enemy dies.")]
-    [SerializeField] int difficultyRamp = 1;
+    [SerializeField] float difficultyRamp = 1;
 
     public int currentHitPoints = 0;
     Enemy enemy;
-
+    
 
     void OnEnable()
     {
@@ -37,7 +37,7 @@ public class EnemyHealth : MonoBehaviour
         if(currentHitPoints <= 0)
         {
             gameObject.SetActive(false);
-            maxHitPoints += difficultyRamp;
+            maxHitPoints = (int)Mathf.Ceil(maxHitPoints * difficultyRamp);
             enemy.RewardGold();
             Instantiate(dieVFX_SFX, transform.position, Quaternion.identity);
         }

@@ -158,7 +158,7 @@ MonoBehaviour:
   maxHitPoints: 1
   hitVFX: {fileID: 4518813783525434926, guid: 1828c50e6d70e2e44bfac6b91ebb8a04, type: 3}
   dieVFX_SFX: {fileID: 1337105774724526883, guid: 7dace15a8ae870042b2139c9a8cd2019, type: 3}
-  difficultyRamp: 2
+  difficultyRamp: 1.2
   currentHitPoints: 0
 --- !u!114 &-2997265570297890518
 MonoBehaviour:
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d096e6f0549697478ca5feb08a1634b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldReward: 25
+  goldReward: 10
   goldPenalty: 25
   pointReward: 1
 --- !u!1 &9138328866215706503
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9138328866215706503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 

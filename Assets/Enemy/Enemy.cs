@@ -9,15 +9,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] int pointReward = 1;
 
     Bank bank;
-
+    KillCount kill_count;
     void Start()
     {
-        bank = FindObjectOfType<Bank>();        
+        bank = FindObjectOfType<Bank>();
+        kill_count = FindObjectOfType<KillCount>();
     }
 
     public void RewardGold()
     {
         if(bank == null) { return; }
+        kill_count.increase();
         bank.Deposit(goldReward, pointReward);
     }
 

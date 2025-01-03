@@ -5,8 +5,8 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     [SerializeField] Tower towerPrefab;
-    
     [SerializeField] bool isPlaceable;
+    [SerializeField] GenerateNumbers generator;
     public bool IsPlaceable { get { return isPlaceable; } }
 
     GridManager gridManager;
@@ -17,6 +17,8 @@ public class Tile : MonoBehaviour
     {
         gridManager = FindObjectOfType<GridManager>();
         pathfinder = FindObjectOfType<Pathfinder>();
+        GameObject manager = GameObject.FindWithTag("Manager");
+        generator = manager.GetComponent<GenerateNumbers>();
     }
 
     void Start()
@@ -36,11 +38,16 @@ public class Tile : MonoBehaviour
     {
         if(gridManager.GetNode(coordinates).isWalkable && !pathfinder.WillBlockPath(coordinates))
         {
+            towerPrefab.GetComponent<TowerLabeler>().value = generator.numbers[generator.index]; // Assign a random value for each tower
             bool isSuccessful = towerPrefab.CreateTower(towerPrefab, transform.position);
             if(isSuccessful)
             {
                 gridManager.BlockNode(coordinates);
                 pathfinder.NotifyReceivers();
+
+                generator.update_number();
+                generator.index++; // Move to the next random number
+                
             }
         }
     }

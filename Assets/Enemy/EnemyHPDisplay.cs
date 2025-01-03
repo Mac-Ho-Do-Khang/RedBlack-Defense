@@ -6,12 +6,14 @@ using TMPro;
 [ExecuteAlways]
 public class EnemyHPDisplay : MonoBehaviour
 {
+    DisplayManager displayManager;
     TextMeshPro hp;
     EnemyHealth enemy;
-    int n;
 
     void Awake()
     {
+        GameObject manager = GameObject.FindWithTag("Manager");
+        displayManager = manager.GetComponent<DisplayManager>();
         hp = GetComponent<TextMeshPro>();
         enemy = GetComponentInParent<EnemyHealth>();
         hp.enabled = false;
@@ -20,6 +22,6 @@ public class EnemyHPDisplay : MonoBehaviour
     void Update()
     {
         hp.text = enemy.currentHitPoints.ToString();
-        if (Input.GetKeyDown(KeyCode.H)) hp.enabled = !hp.IsActive();
+        hp.enabled = displayManager.display_enemy_health;
     }
 }
