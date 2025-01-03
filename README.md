@@ -1,6 +1,6 @@
 # 🌲 **RedBlack Defense** 🌟  
 
-Welcome to **RedBlack Defense**, a unique blend of serious learning and strategic gameplay! This project was created during the **Game Programming course (CO3045)** by me (**Do Khang**) and a fellow student. While I handled all aspects of **game development**, my friend contributed by sourcing materials and documentation.  
+Welcome to **RedBlack Defense**, a unique blend of serious learning and strategic gameplay! This project was created during the **Game Programming course (CO3045)** by me and a fellow student. While I handled all aspects of **game development**, my friend contributed by sourcing materials and documentation.  
 
 ---
 
@@ -24,7 +24,7 @@ Welcome to **RedBlack Defense**, a unique blend of serious learning and strategi
 
 This game incorporates:  
 - A serious focus on the **Red-Black Tree** for educational simulation.  
-- A classic **Tower Defense** experience inspired by the [Unity Realm Rush course on Udemy](https://www.udemy.com/).  
+- A classic **Tower Defense** experience inspired by the [Unity Realm Rush course on Udemy](https://www.udemy.com/course/unitycourse2/?kw=ga&src=sac&couponCode=NEWYEARCAREER).  
   - You might notice references to **Realm Rush** in some materials.  
 
 ---
