@@ -1,7 +1,3 @@
-Here’s a polished README with icons to make it visually appealing:
-
----
-
 # 🌲 **RedBlack Defense** 🌟  
 
 Welcome to **RedBlack Defense**, a unique blend of serious learning and strategic gameplay! This project was created during the **Game Programming course (CO3045)** by me (**Do Khang**) and a fellow student. While I handled all aspects of **game development**, my friend contributed by sourcing materials and documentation.  
